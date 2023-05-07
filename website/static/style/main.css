@@ -1,0 +1,48 @@
+.flex-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+  
+.flex-container > div {
+    background-color: #e0dcdc;
+    width: 200px;
+    margin: 10px;
+    text-align: center;
+    line-height: 100px;
+    font-size: 30px;
+    transition: 1s;
+    border-radius: 10%;
+}
+
+.flex-container > div:hover {
+    background-color: white;
+}
+
+#heading_main {
+    text-align: center;
+    font-size: 50px;
+    transition: 2s;
+}
+
+#heading_main:hover {
+    color: brown;
+}
+
+#nav {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#nav_btn {
+    margin-left: 20px;
+    width: 80px;
+    height: 40px;
+    background-color: #e0dcdc;
+    border: none;
+    border-radius: 10%;
+    transition: 1s;
+}
+
+#nav_btn:hover {
+    background-color: white;
+}
