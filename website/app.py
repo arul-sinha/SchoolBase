@@ -1,4 +1,4 @@
-from flask import Flask, Response, render_template, request
+from flask import Flask, redirect, Response, render_template, request
 
 app = Flask("__name__")
 
@@ -9,9 +9,12 @@ def hello():
     else:
         return Response("temp")
 
-@app.route("/register")
+@app.route("/register", methods=['POST', 'GET'])
 def register():
-    return render_template("register.html")
+    if request.method == 'GET':
+        return render_template("register.html")
+    else:
+        return redirect("/login")
 
 if __name__ == "__main__":
     app.run(debug=True)

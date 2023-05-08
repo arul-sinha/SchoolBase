@@ -1,0 +1,33 @@
+#reg_container {
+    margin: auto;
+    width: 70%;
+    background-color: #e0dcdc;
+    border-radius: 20px;
+    padding: 10px;
+    text-align: center;
+    font-size: 30px;
+}
+
+#reg_file_input, #reg_btn, #reg_input, #reg_select {
+    background-color: white;
+    font-size: 30px;
+    width: 90%;
+    border: none;
+    border-radius: 20px;
+    padding: 10px;
+    transition: 1s;   
+}
+
+#reg_file_input:hover, #reg_btn:hover, #reg_input:hover, #reg_select:hover{
+    background-color: #e0dcdc;
+}
+
+#reg_file_input:focus, #reg_btn:focus, #reg_input:focus, #reg_select:focus {
+    border: none;
+    border-left: 6px solid black;
+    border-right: 6px solid black;
+}
+
+#reg_file_input >button {
+    color: blue;
+}
