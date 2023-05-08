@@ -20,17 +20,17 @@
         <h1 id="heading_main">Register</h1>
         <div id="reg_container">
             <form action="/register" method="post">
-                name &nbsp;&nbsp;&nbsp;&nbsp;<i class="bi bi-person-badge"></i><br> <input id="reg_input" type="text"><br><br>
-                email &nbsp;&nbsp;&nbsp;&nbsp;<i class="bi bi-envelope"></i><br> <input id="reg_input" type="text"><br><br>
-                phone number &nbsp;&nbsp;&nbsp;&nbsp;<i class="bi bi-phone"></i><br> <input id="reg_input" type="text"><br><br>
-                password &nbsp;&nbsp;&nbsp;&nbsp;<i class="bi bi-lock"></i><br> <input id="reg_input" type="text"><br><br>
-                confirm password &nbsp;&nbsp;&nbsp;&nbsp;<i class="bi bi-shield-lock"></i><br> <input id="reg_input" type="text"><br><br>
-                Type &nbsp;&nbsp;&nbsp;&nbsp;<i class="bi bi-person-vcard"></i><br> <select name="" id="reg_select">
+                name &nbsp;&nbsp;&nbsp;&nbsp;<i class="bi bi-person-badge"></i><br> <input id="reg_input" name="reg_name" type="text"><br><br>
+                email &nbsp;&nbsp;&nbsp;&nbsp;<i class="bi bi-envelope"></i><br> <input id="reg_input" name="reg_email" type="text"><br><br>
+                phone number &nbsp;&nbsp;&nbsp;&nbsp;<i class="bi bi-phone"></i><br> <input id="reg_input" name="reg_tel" type="text"><br><br>
+                password &nbsp;&nbsp;&nbsp;&nbsp;<i class="bi bi-lock"></i><br> <input id="reg_input" name="reg_pass" type="password"><br><br>
+                confirm password &nbsp;&nbsp;&nbsp;&nbsp;<i class="bi bi-shield-lock"></i><br> <input id="reg_input" name="reg_con_pass" type="password"><br><br>
+                Type &nbsp;&nbsp;&nbsp;&nbsp;<i class="bi bi-person-vcard"></i><br> <select name="reg_type" id="reg_select">
                     <option value="admin">Admin</option>
                     <option value="student">Student</option>
                     <option value="teacher">Teacher</option>
                 </select><br><br>
-                Photo &nbsp;&nbsp;&nbsp;&nbsp;<i class="bi bi-camera"></i>   <br> <input id="reg_file_input" type="file"><br><br>
+                Photo &nbsp;&nbsp;&nbsp;&nbsp;<i class="bi bi-camera"></i>   <br> <input id="reg_file_input" name="reg_photo" type="file"><br><br>
                 <button type="submit" id="reg_btn">Register&nbsp;&nbsp;&nbsp;<i class="bi bi-check-circle"></i></button>
             </form>
         </div>
