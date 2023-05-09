@@ -1,15 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Comfortaa&display=swap');
 
-html, div {
-    font-family: 'comfortaa' , 'cursive';
+html,
+div {
+    font-family: 'comfortaa', 'cursive';
 }
 
 .flex-container {
     display: flex;
     flex-wrap: wrap;
 }
-  
-.flex-container > div {
+
+.flex-container>div {
     background-color: #e0dcdc;
     width: auto;
     margin: 10px;
@@ -21,14 +22,14 @@ html, div {
     border-radius: 10px;
 }
 
-.flex-container > div:hover {
+.flex-container>div:hover {
     background-color: white;
 }
 
 #heading_main {
     text-align: center;
     font-size: 50px;
-    font-family: 'comfortaa' , 'cursive';
+    font-family: 'comfortaa', 'cursive';
     transition: 2s;
 }
 
@@ -38,6 +39,10 @@ html, div {
 
 #nav {
     display: flex;
+    border-bottom: 2px solid black;
+    border-radius: 10px;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
     flex-wrap: wrap;
 }
 
