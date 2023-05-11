@@ -1,4 +1,4 @@
-from flask import Flask, redirect, Response, render_template, request
+from flask import Flask, redirect, Response, render_template, request, make_response
 import os
 from cs50 import *
 
@@ -12,6 +12,21 @@ def hello():
         return render_template("index.html")
     else:
         return Response("temp")
+
+@app.route("/login", methods=['GET', 'POST'])
+def login():
+    if request.method == "POST":
+        name = request.form.get("log_uname")
+        password = request.form.get("log_pass")
+        user = db_users.execute("SELECT * FROM users WHERE username = ? AND password = ?", name, password)
+        if user:
+            response = make_response(redirect("/"))
+            response.set_cookie("user_id", str(user[0]["id"]))
+            return response
+        else:
+            return render_template("login.html", error="Invalid username or password")
+    else:
+        return render_template("login.html")
 
 @app.route("/register", methods=['POST', 'GET'])
 def register():
