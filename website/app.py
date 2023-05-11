@@ -6,8 +6,6 @@ db_users = SQL("sqlite:///./sql/users.db")
 
 app = Flask("__name__")
 
-#test
-
 @app.route("/", methods=['POST', 'GET'])
 def hello():
     if request.method == 'GET':
