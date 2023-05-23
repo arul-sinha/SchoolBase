@@ -12,15 +12,15 @@
         <script src="../static/script/main.js"></script>
     </head>
     <body>
-        {{ error }}
         <div id="nav">
             <a href="/login"><button id="nav_btn">login</button></a><a href="/"><button id="nav_btn">Home</button></a><a href="/about"><button id="nav_btn">about</button></a><a href="/profile"><button id="nav_btn">Profile</button></a>
             <form action=""></form>
             <br>
         </div>        
-        <h1 id="heading_main">Register</h1>
+        <h1 id="heading_main">Login</h1>
         <div id="reg_container">
             <form action="/login" method="post">
+                <h2>{{ error }}</h2>
                 password &nbsp;&nbsp;&nbsp;&nbsp;<i class="bi bi-lock"></i><br> <input id="reg_input" name="log_pass" type="password"><br><br>
                 username &nbsp;&nbsp;&nbsp;&nbsp;<i class="bi bi-person-vcard"></i><br> <input id="reg_input" name="log_uname" type="text"><br><br>
                 <button type="submit" id="reg_btn">Register&nbsp;&nbsp;&nbsp;<i class="bi bi-check-circle"></i></button>
