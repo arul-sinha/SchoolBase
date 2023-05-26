@@ -50,7 +50,10 @@ def register():
 
 @app.route("/task", methods=['POST', 'GET'])
 def task():
-    return render_template("task.html")
+    if request.method == "GET":
+        return render_template("task.html")
+    else:
+        return redirect("/")
 
 if __name__ == "__main__":
     app.run(debug=True)
