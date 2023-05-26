@@ -33,7 +33,6 @@ def register():
     if request.method == 'GET':
         return render_template("register.html")
     else:
-        global name
         name = request.form.get("reg_name")
         email = request.form.get("reg_email")
         password = request.form.get("reg_pass")
@@ -48,6 +47,10 @@ def register():
         type = request.form.get("reg_type")
         db_users.execute("INSERT INTO users (name, email, password, type, username, school, phone_number) VALUES (?, ?, ?, ?, ?, ?, ?)",name, email, password, type, username, school, phone_number)
         return redirect("/login")
+
+@app.route("/task", methods=['POST', 'GET'])
+def task():
+    return render_template("task.html")
 
 if __name__ == "__main__":
     app.run(debug=True)
