@@ -20,7 +20,7 @@
         <h1 id="heading_main">Login</h1>
         <div id="reg_container">
             <form action="/login" method="post">
-                <h2>{{ error }}</h2>
+                <h2 style="color: red;">*{{ error }}*</h2>
                 password &nbsp;&nbsp;&nbsp;&nbsp;<i class="bi bi-lock"></i><br> <input id="reg_input" name="log_pass" type="password"><br><br>
                 username &nbsp;&nbsp;&nbsp;&nbsp;<i class="bi bi-person-vcard"></i><br> <input id="reg_input" name="log_uname" type="text"><br><br>
                 <button type="submit" id="reg_btn">Register&nbsp;&nbsp;&nbsp;<i class="bi bi-check-circle"></i></button>
