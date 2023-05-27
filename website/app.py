@@ -1,10 +1,12 @@
 from flask import Flask, redirect, Response, render_template, request, make_response
 import os
+from werkzeug.utils import secure_filename
 from cs50 import *
 
 db_users = SQL("sqlite:///./sql/users.db")
-
+UPLOAD_FOLDER = "./data/user/images"
 app = Flask("__name__")
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 @app.route("/", methods=['POST', 'GET'])
 def hello():
@@ -34,6 +36,9 @@ def register():
         return render_template("register.html")
     else:
         name = request.form.get("reg_name")
+        photo = request.files.get("reg_photo")
+        filename = secure_filename(photo.filename)
+        photo.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
         email = request.form.get("reg_email")
         password = request.form.get("reg_pass")
         password_confirm = request.form.get("reg_con_pass")
