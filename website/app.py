@@ -1,6 +1,8 @@
-from flask import Flask, redirect, Response, render_template, request, make_response
+from flask import Flask, redirect, Response, render_template, request, make_response, send_from_directory
 import os
 from werkzeug.utils import secure_filename
+import shutil
+from func.remove_space import remove_space
 from cs50 import *
 
 db_users = SQL("sqlite:///./sql/users.db")
@@ -11,7 +13,11 @@ app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 @app.route("/", methods=['POST', 'GET'])
 def hello():
     if request.method == 'GET':
-        return render_template("index.html")
+        photo_path = request.cookies.get("photo_path")
+        if photo_path:
+            return render_template("index.html", photo_path=photo_path)
+        else:
+            return render_template("index.html")
     else:
         return Response("temp")
 
@@ -30,6 +36,11 @@ def login():
     else:
         return render_template("login.html")
 
+
+@app.route('/data/<path:filename>')
+def get_image(filename):
+    return send_from_directory('data/user/images', filename)
+
 @app.route("/register", methods=['POST', 'GET'])
 def register():
     if request.method == 'GET':
@@ -38,7 +49,15 @@ def register():
         name = request.form.get("reg_name")
         photo = request.files.get("reg_photo")
         filename = secure_filename(photo.filename)
-        photo.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+        filename_2 = name + " " + filename
+        filename_2 = remove_space(filename_2)
+        name = remove_space(name)
+        photo.save(os.path.join(app.config['UPLOAD_FOLDER'], filename_2))
+        directory_path = 'data/user/images/' + name
+        os.makedirs(directory_path, exist_ok=True)
+        shutil.move(f'./data/user/images/{filename_2}', f'data/user/images/{name}/{filename_2}')
+        global photo_path
+        photo_path = f'./data/user/images/{name}/{filename_2}'
         email = request.form.get("reg_email")
         password = request.form.get("reg_pass")
         password_confirm = request.form.get("reg_con_pass")
@@ -51,7 +70,9 @@ def register():
         phone_number = request.form.get("reg_tel")
         type = request.form.get("reg_type")
         db_users.execute("INSERT INTO users (name, email, password, type, username, school, phone_number) VALUES (?, ?, ?, ?, ?, ?, ?)",name, email, password, type, username, school, phone_number)
-        return redirect("/login")
+        response = make_response(redirect("/login"))
+        response.set_cookie("photo_path", str(photo_path))
+        return response
 
 @app.route("/task", methods=['POST', 'GET'])
 def task():

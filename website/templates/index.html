@@ -20,6 +20,11 @@
             </div>
             <div id="nav_left_btn">
                 <button id="nav_btn"><i onclick="lightMode()" class="bi bi-brightness-high" id="lightMode_btn"></i><i onclick="darkMode()" class="bi bi-moon" id="darkMode_btn" ></i></button>
+                {% if photo_path %}
+                <img src="/data/{{ photo_path }}" alt="">
+                {% else %}
+                    <img src="" alt="">
+                {% endif %}
             </div>
             <br>
         </div>
